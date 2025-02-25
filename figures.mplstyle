@@ -1,0 +1,39 @@
+# Legend
+legend.fancybox: False
+legend.edgecolor: "inherit"
+legend.framealpha: 1.0
+legend.facecolor: "white"
+
+# Fonts
+font.sans-serif: "Helvetica"
+font.size: 8.0
+
+# Figure
+figure.dpi: 300
+
+# Patch
+patch.linewidth: 0.5
+patch.edgecolor: black
+patch.force_edgecolor: True
+
+# MathText
+mathtext.fontset: "custom"
+mathtext.default: "regular"
+mathtext.it: "Helvetica:italic"
+mathtext.bf: "Helvetica:bold"
+mathtext.sf: "Helvetica"
+mathtext.cal: "Helvetica:italic"
+mathtext.fallback: "cm"
+
+# Axes
+axes.prop_cycle: cycler(color=["navy", "orange", "teal", "mediumorchid", "red", "forestgreen"])
+axes.linewidth: 0.5
+
+# Ticks
+xtick.major.width: 0.5
+ytick.major.width: 0.5
+xtick.minor.width: 0.5
+ytick.minor.width: 0.5
+
+# Lines
+lines.linewidth: 0.8
