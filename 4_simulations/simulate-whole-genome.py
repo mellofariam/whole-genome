@@ -16,8 +16,8 @@ nucleus.saveFolder(f"{replica}")
 chromosomes = nucleus.initStructure(
     mode="pdb",
     CoordFiles=[
-        f"/home/matheusfmello/4_replicas/{replica}/chro{chroIndex}_collapsed.pdb"
-        for chroIndex in range(1, 47)
+        f"../3_collapse/{replica}/chr{chr_number}_collapsed.pdb"
+        for chr_number in range(1, 47)
     ],
 )
 
@@ -46,10 +46,8 @@ nucleus.addLoops(
     rc=1.78,
     X=-1.612990,
     looplists=[
-        "/home/matheusfmello/inputs/chr{i}_loops.txt".format(
-            i=chroIndex
-        )
-        for chroIndex in range(1, 47)
+        f"../2_inputs/chr{chr_number}_loops.txt"
+        for chr_number in range(1, 47)
     ],
 )
 
@@ -60,13 +58,12 @@ for i in range(46):
     )
 
 print("Simulation set... Starting calculations")
-
-# RG = []
-nucleus.createSimulation()
 ## Running the simulation to generate a collapsed structure @ T = 1.5
+
+Rg = []
 for _ in range(2000):
     nucleus.runSimBlock(1000, increment=False)
-    # RG.append(nucleus.chromRG())
+    Rg.append(nucleus.chromRG())
 
 
 ## Running the annealing to return to T = 1.0
@@ -76,7 +73,7 @@ for T in np.linspace(1.475, 1.0, num=20):
 
     for _ in range(100):
         nucleus.runSimBlock(1000, increment=False)
-        # RG.append(nucleus.chromRG())
+        Rg.append(nucleus.chromRG())
 
 
 print("Forces after annealing:")
@@ -93,7 +90,7 @@ print("Flat Bottom Harmonic removed and Spherical Confinement added!")
 
 for _ in range(1000):
     nucleus.runSimBlock(1000, increment=False)
-    # RG.append(nucleus.chromRG())
+    Rg.append(nucleus.chromRG())
 
 print("Forces after equilibration:")
 nucleus.printForces()
@@ -107,7 +104,7 @@ nucleus.initStorage("nucleus", mode="w")
 
 for frame in range(50_000):
     nucleus.runSimBlock(1000, increment=True)
-    # RG.append(nucleus.chromRG())
+    Rg.append(nucleus.chromRG())
 
     if frame % 100 == 0:
         nucleus.saveStructure()
@@ -123,6 +120,6 @@ for i in range(46):
 
 nucleus.saveStructure(mode="pdb")
 
-# np.savetxt('RG.data', RG)
+np.savetxt(f"{replica}/radius-of-gyration.dat", Rg)
 
 print("Files closed! All set!")
