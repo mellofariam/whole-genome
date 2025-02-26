@@ -5,7 +5,7 @@ from OpenMiChroM.ChromDynamics import MiChroM
 
 ## Usage: collapse.py chr_number
 
-replica_number = int(sys.argv[1])
+replica = int(sys.argv[1])
 chr_number = int(sys.argv[2])
 
 sim = MiChroM(
@@ -14,7 +14,7 @@ sim = MiChroM(
 sim.setup(
     platform="OpenCL", integrator="Langevin", precision="single"
 )
-sim.saveFolder(f"{replica_number}")
+sim.saveFolder(f"{replica}")
 initStructure = sim.createSpringSpiral(
     ChromSeq=f"../2_inputs/chr{chr_number}_beads.txt",
     isRing=False,
@@ -75,4 +75,4 @@ sim.saveStructure(mode="pdb")
 sim.storage[0].close()
 del sim
 
-np.savetxt(f"Rg-chr{chr_number}.dat", Rg)
+np.savetxt(f"{replica}/Rg-chr{chr_number}.dat", Rg)
