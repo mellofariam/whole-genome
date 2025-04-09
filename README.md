@@ -1,4 +1,4 @@
-# Source code for Mello, M.F. et al., 2025. Reconfiguration Timescales of Chromatin Architecture Across Nuclear Length Scales in Whole-Genome Models
+# Source code for Mello, M.F. et al., 2025. Support Information: Reconfiguration Timescales for Chromatin Architecture
 
 ## Input preparation
 
