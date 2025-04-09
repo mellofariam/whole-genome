@@ -1,4 +1,4 @@
-# Source code for Mello, M.F. et al., 2025. Support Information: Reconfiguration Timescales for Chromatin Architecture
+# Source code for Mello, M.F. et al., 2025. Reconfiguration Timescales for Chromatin Architecture
 
 ## Input preparation
 
